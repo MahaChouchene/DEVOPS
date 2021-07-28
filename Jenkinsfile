@@ -18,7 +18,7 @@ pipeline {
 		
 		stage('image'){
 			steps{ echo '2. BUILDING DOCKER image'
-				sh 'docker build -t position-simulator:$(commit_id) .'
+				sh "docker build -t position-simulator:$(commit_id) ./assignement_6/"
 				echo 'Build completed'}	
 			}
 		stage('deploy'){
