@@ -14,16 +14,11 @@ pipeline {
             }
         }
         stage('Build') {
-            steps {
-                echo '1-----------------------Building the maven project--------------------------'
-                sh 'mvn clean install'
-                echo 'build complete'
-            }
-        }
+}
         stage('Image Build') {
             steps {
                 echo '2--------------------Building image-------------------'
-                sh "'docker build -t position-simulor:${commit_id} ./assignment_6/'"
+                sh "'docker build -t position-simulor:${commit_id} .'"
                 echo 'build complete'
             }
         }
