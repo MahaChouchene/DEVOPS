@@ -12,7 +12,7 @@ pipeline {
 			}
 		stage('build'){
 			steps{ echo '1. BUILDING MAVEN WOKRLOAD'
-				sh "mvn clean install"
+				sh "mvn clean install ."
 				echo 'Build completed' }	
 			}
 		
