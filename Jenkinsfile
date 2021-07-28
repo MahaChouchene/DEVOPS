@@ -1,4 +1,4 @@
-t_id
+commit_id
 pipeline {
         agent any
 
@@ -26,7 +26,7 @@ pipeline {
                 stage('Deploy') {
                         steps {
                                 echo 'Deploying to Kubernetes'
-                                sh "sed -i -r 's|richardchesterwood/k8s-fleetman-webapp-angular:release2|webapp:${commit_id}$|' ./assignment_6/workloads.yaml"
+                                sh "sed -i -r 's|richardchesterwood/k8s-fleetman-webapp-angular:release2|webapp:${commit_id}|' ./assignment_6/workloads.yaml"
                                 sh 'kubectl get all'
                                 sh 'kubectl apply -f ./assignment_6/'
                                 sh 'kubectl get all'
