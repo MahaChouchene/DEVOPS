@@ -13,8 +13,6 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
-}
         stage('Image Build') {
             steps {
                 echo '2--------------------Building image-------------------'
