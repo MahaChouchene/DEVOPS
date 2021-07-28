@@ -1,7 +1,7 @@
 def commit_id
 pipeline {
 	agent any
-	satges{
+	stages{
 		stage('preparation'){
 			steps{  checkout scm
 				sh "git rev-parse --short HEAD > .git/commit-id"
