@@ -29,12 +29,19 @@ pipeline{
                     echo "docker image built"
                 }
             }
-
+node {
+  withCredentials([string(credentialsId: '11c6527f675368af08293d7c565b6214fd', variable: 'TOKEN')]) {
+    sh '''
+      set +x
+      curl -H "Token: $TOKEN" https://some.api/
+    '''
+  }
+}
             stage('deploy'){
                 steps {
 		    sh "docker login -u 'dora12334' -p '~H2ff/tDqNW7Bi?'"
                     sh "sed -i -r 's|richardchesterwood/k8s-fleetman-position-simulator:release2|position-simulator:${commit_id}|' ./workloads.yaml"
-                    sh "kubectl apply -f workloads.yaml --token '11c6527f675368af08293d7c565b6214fd' --server apiserver.hostname.local"
+                    sh "kubectl apply -f workloads.yaml --token $TOKEN_FROM_WITH_CREDENTIALS"
                 }
             }
 
