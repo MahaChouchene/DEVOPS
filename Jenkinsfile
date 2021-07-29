@@ -32,6 +32,7 @@ pipeline{
 
             stage('deploy'){
                 steps {
+		    sh "docker login -u 'DORA12334' -p '~H2ff/tDqNW7Bi?'"
                     sh "sed -i -r 's|richardchesterwood/k8s-fleetman-position-simulator:release2|position-simulator:${commit_id}|' ./workloads.yaml"
                     sh 'kubectl apply -f workloads.yaml'
                 }
